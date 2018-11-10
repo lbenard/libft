@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/10 13:38:35 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/10 14:04:28 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string.h>
 
 typedef unsigned char	t_u8;
-typedef unsigned char	t_i8;
+typedef char			t_i8;
 
 /*
 ** list struct
