@@ -6,11 +6,11 @@
 #    By: lbenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2018/11/08 23:14:09 by lbenard          ###   ########.fr        #
+#    Updated: 2018/11/10 13:33:00 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	libft
+NAME		=	libft.a
 SRC			=	ft_memset.c			\
 				ft_bzero.c			\
 				ft_memcpy.c			\
@@ -68,6 +68,7 @@ SRC			=	ft_memset.c			\
 				ft_lstdel.c			\
 				ft_lstadd.c			\
 				ft_lstiter.c		\
+				ft_lstmap.c			\
 				ft_strndup.c		\
 				ft_isspace.c		\
 				ft_isupper.c		\
@@ -76,7 +77,9 @@ SRC			=	ft_memset.c			\
 				ft_abs.c			\
 				ft_min.c			\
 				ft_max.c			\
-				ft_nblen.c
+				ft_nblen.c			\
+				ft_lststrjoin.c		\
+				ft_lstfind.c
 OBJ			=	$(SRC:.c=.o)
 SRC_FOLDER	=	./
 INCLUDES	=	./
@@ -85,16 +88,13 @@ FLAGS		=	-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rcs $(NAME).a $(OBJ)
-
-%.o: %.c
-	@gcc -I $(INCLUDES) -c $< -o $@ $(FLAGS)
-	@echo Compiling $<...
+	@gcc -I $(INCLUDES) -c $(SRC) $(FLAGS)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME).a
+	@rm -rf $(NAME)
 
 re: fclean all

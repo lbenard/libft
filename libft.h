@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/08 22:00:05 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/10 13:38:35 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,6 @@ int						ft_toupper(int c);
 int						ft_tolower(int c);
 
 /*
-** additionnal libc functions
-*/
-
-char					*ft_strndup(const char *s1, size_t n);
-int						ft_isspace(int c);
-int						ft_isupper(int c);
-int						ft_islower(int c);
-size_t					ft_strnlen(const char *s, size_t maxlen);
-int						ft_abs(int i);
-
-/*
 ** second part functions
 */
 
@@ -118,11 +107,26 @@ void					ft_lstiter(t_list *lst, void (*f)(t_list*));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list*));
 
 /*
+** additionnal libc functions
+*/
+
+char					*ft_strndup(const char *s1, size_t n);
+int						ft_isspace(int c);
+int						ft_isupper(int c);
+int						ft_islower(int c);
+size_t					ft_strnlen(const char *s, size_t maxlen);
+int						ft_abs(int i);
+
+/*
 ** personnal functions
 */
 
 int						ft_min(int a, int b);
 int						ft_max(int a, int b);
 size_t					ft_nblen(int n);
+char					*ft_lststrjoin(const t_list *lst,
+	const char *separator);
+t_list					*ft_lstfind(const t_list *lst, const void *to_find,
+	int (*cmp)(const void*, const void*));
 
 #endif

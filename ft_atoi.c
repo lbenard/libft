@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:27:05 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/07 19:38:38 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/10 13:09:55 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	result;
-	int	sign;
-	int	last;
+	long long	result;
+	int			sign;
+	long long	last;
 
 	sign = 1;
 	result = 0;
@@ -37,5 +37,5 @@ int	ft_atoi(const char *str)
 		if (result > last)
 			return (-1);
 	}
-	return (-result * sign);
+	return ((int)-result * sign);
 }
