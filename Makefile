@@ -6,7 +6,7 @@
 #    By: lbenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2018/11/12 18:28:49 by lbenard          ###   ########.fr        #
+#    Updated: 2018/11/12 19:21:27 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,15 +88,19 @@ FLAGS		=	-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@echo Creating libft.a...
+	@ar rcs $(NAME) $(OBJ)
 
 .c.o: $(SRC)
-	gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
+	@echo Compiling $< into $@...
+	@gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
 
 clean:
-	rm -rf $(OBJ)
+	@echo Deleting $(OBJ)...
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@echo Deleting $(NAME)...
+	@rm -rf $(NAME)
 
 re: fclean all
