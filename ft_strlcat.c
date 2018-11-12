@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:58:22 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/09 16:17:50 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/12 18:27:53 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		dst[j + i] = src[i];
 		i++;
 	}
-	if (size > j)
+	if (size > j + i)
 		dst[j + i] = 0;
 	return (j + ft_strlen(src));
 }

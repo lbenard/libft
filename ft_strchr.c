@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 20:31:10 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/07 14:53:12 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/12 18:46:54 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,5 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (42)
-	{
-		if (*s == (char)c)
-			return ((char*)s);
-		if (!*s)
-			break ;
-		s++;
-	}
-	return (NULL);
+	return (ft_memchr(s, c, ft_strlen(s) + 1));
 }

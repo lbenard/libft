@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:03:37 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/06 18:04:46 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/12 16:21:37 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (*s++)
+	while (s[i])
 		i++;
 	return (i);
 }
