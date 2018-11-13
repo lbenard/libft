@@ -6,7 +6,7 @@
 #    By: lbenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2018/11/12 19:21:27 by lbenard          ###   ########.fr        #
+#    Updated: 2018/11/12 21:13:24 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,23 +84,30 @@ OBJ			=	$(SRC:.c=.o)
 SRC_FOLDER	=	./
 INCLUDES	=	./
 FLAGS		=	-Wall -Wextra -Werror
+NORM_FILES	=	$(shell find . -name "*.c" -o -name "*.h")
 
-all: $(NAME)
+all: norm $(NAME)
 
 $(NAME): $(OBJ)
-	@echo Creating libft.a...
+	@echo "\033[32m  Creating: \033[0m$(NAME)"
 	@ar rcs $(NAME) $(OBJ)
 
 .c.o: $(SRC)
-	@echo Compiling $< into $@...
+	@printf "\033[32m Compiling: \033[0m$< -> $@\n"
 	@gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
 
+norm:
+	@printf "\033[32mNorminette:\033[0m "
+	@if ! norminette $(NORM_FILES) | grep -sB1 -E "Error|Warning"; then echo "\033[0mEvery file is following the norm"; fi
+
 clean:
-	@echo Deleting $(OBJ)...
+	@printf "\033[32m  Cleaning: \033[0m"
+	@find . -name "*.o" -exec sh -c 'basename {}' \; | tr "\n" " "
+	@echo ""
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@echo Deleting $(NAME)...
+	@echo "\033[32m  Removing: \033[0m$(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all
