@@ -6,7 +6,7 @@
 #    By: lbenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2018/11/12 21:13:24 by lbenard          ###   ########.fr        #
+#    Updated: 2018/11/14 04:15:56 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,19 +86,17 @@ INCLUDES	=	./
 FLAGS		=	-Wall -Wextra -Werror
 NORM_FILES	=	$(shell find . -name "*.c" -o -name "*.h")
 
-all: norm $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
+	@printf "\033[32mNorminette:\033[0m "
+	@if ! norminette $(NORM_FILES) | grep -sB1 -E "Error|Warning"; then echo "\033[0mEvery file is following the norm"; fi
 	@echo "\033[32m  Creating: \033[0m$(NAME)"
 	@ar rcs $(NAME) $(OBJ)
 
 .c.o: $(SRC)
 	@printf "\033[32m Compiling: \033[0m$< -> $@\n"
 	@gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
-
-norm:
-	@printf "\033[32mNorminette:\033[0m "
-	@if ! norminette $(NORM_FILES) | grep -sB1 -E "Error|Warning"; then echo "\033[0mEvery file is following the norm"; fi
 
 clean:
 	@printf "\033[32m  Cleaning: \033[0m"

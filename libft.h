@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/10 18:18:48 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/14 09:49:35 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,7 @@ char					*ft_lststrjoin(const t_list *lst,
 	const char *separator);
 t_list					*ft_lstfind(const t_list *lst, const void *to_find,
 	int (*cmp)(const void*, const void*));
+t_list					*ft_lstpushback(t_list **list, t_list *new);
+
 
 #endif
