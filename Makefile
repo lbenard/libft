@@ -6,7 +6,7 @@
 #    By: lbenard <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2018/11/15 01:10:34 by lbenard          ###   ########.fr        #
+#    Updated: 2018/11/15 04:39:34 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ SRC			=	ft_memset.c			\
 				ft_lststrjoin.c		\
 				ft_lstfind.c		\
 				ft_lstpushback.c	\
-				ft_lstlast.c
+				ft_lstlast.c		\
+				ft_lstfree.c
 OBJ			=	$(SRC:.c=.o)
 SRC_FOLDER	=	./
 INCLUDES	=	./
