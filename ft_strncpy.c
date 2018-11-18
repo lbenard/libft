@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 18:14:16 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/12 17:38:28 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/17 02:29:32 by lbenard           #+#    #+#             */
+/*   Updated: 2018/11/17 02:35:40 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,14 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t	src_len;
-	size_t	i;
+	char	*dst_cpy;
 
-	src_len = ft_strlen(src);
-	i = 0;
-	if (src_len < len)
+	dst_cpy = dst;
+	while (len--)
 	{
-		while (i < len)
-		{
-			if (i < src_len)
-				dst[i] = src[i];
-			else
-				dst[i] = 0;
-			i++;
-		}
+		*(dst++) = *src;
+		if (*src)
+			src++;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	return (dst_cpy);
 }

@@ -6,7 +6,7 @@
 /*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 21:19:55 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/08 21:35:09 by lbenard          ###   ########.fr       */
+/*   Updated: 2018/11/18 08:01:07 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ t_list	*ft_lstnew(const void *content, size_t content_size)
 	else
 	{
 		if (!(lst->content = malloc(content_size)))
+		{
+			free(lst);
 			return (NULL);
+		}
 		ft_memcpy(lst->content, content, content_size);
 		lst->content_size = content_size;
 	}

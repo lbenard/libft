@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:50:50 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/12 18:17:47 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/17 02:07:51 by lbenard           #+#    #+#             */
+/*   Updated: 2018/11/17 03:43:52 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_u8	*s_cpy;
-	size_t	i;
+	const t_u8	*s_byte;
+	t_u8		to_find;
 
-	s_cpy = (t_u8*)s;
-	i = 0;
-	while (i < n)
+	s_byte = (const t_u8*)s;
+	to_find = (t_u8)c;
+	while (n--)
 	{
-		if (s_cpy[i] == (t_u8)c)
-			return ((void*)(s + i));
-		i++;
+		if (*s_byte == to_find)
+			return ((void*)s_byte);
+		s_byte++;
 	}
 	return (NULL);
 }

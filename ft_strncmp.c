@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 13:24:47 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/07 13:26:34 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/18 03:23:15 by lbenard           #+#    #+#             */
+/*   Updated: 2018/11/18 03:25:04 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	return (ft_memcmp(s1, s2,
-		ft_min(ft_min(ft_strlen(s1) + 1, ft_strlen(s2) + 1), n)));
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	min;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	min = ((s1_len < s2_len) ? s1_len : s2_len) + 1;
+	return (ft_memcmp((void*)s1, (void*)s2, (min < n) ? min : n));
 }

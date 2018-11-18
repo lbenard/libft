@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 16:28:33 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/12 19:01:05 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/18 02:49:19 by lbenard           #+#    #+#             */
+/*   Updated: 2018/11/18 06:00:38 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	j;
+	size_t	haystack_len;
 	size_t	needle_len;
+	size_t	looking_len;
 
-	if (!*needle || ft_strcmp(haystack, needle) == 0)
-		return ((char*)haystack);
 	i = 0;
+	haystack_len = ft_strlen(haystack);
 	needle_len = ft_strlen(needle);
-	while (haystack[i] && len >= needle_len)
+	if (needle_len == 0)
+		return (char *)haystack;
+	if (needle_len > len)
+		return (NULL);
+	looking_len = ft_min(len, haystack_len);
+	while (i <= ((looking_len >= needle_len) ? looking_len - needle_len : 0))
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j])
-		{
-			if (!needle[j + 1])
-				return ((char*)(haystack + i));
-			j++;
-		}
+		if (ft_memcmp(&haystack[i], needle, needle_len) == 0)
+			return ((char*)&haystack[i]);
 		i++;
-		len--;
 	}
 	return (NULL);
 }

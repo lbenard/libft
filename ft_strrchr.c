@@ -3,22 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbenard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 20:35:42 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/12 18:50:56 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/18 02:06:12 by lbenard           #+#    #+#             */
+/*   Updated: 2018/11/18 03:25:18 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char		to_find;
+	const char	*s_cpy;
 
-	i = ft_strlen(s);
-	while (i && s[i] != (char)c)
-		i--;
-	return ((s[i] == (char)c) ? (char*)(s + i) : NULL);
+	to_find = (char)c;
+	s_cpy = (char*)s + ft_strlen(s);
+	while (42)
+	{
+		if (*s_cpy == to_find)
+			return ((char*)s_cpy);
+		if (s_cpy == s)
+			break ;
+		s_cpy--;
+	}
+	return (NULL);
 }
