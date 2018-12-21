@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_vec3f_to_vec4f.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 09:45:59 by lbenard           #+#    #+#             */
-/*   Updated: 2018/11/14 09:49:13 by lbenard          ###   ########.fr       */
+/*   Created: 2018/11/30 16:27:59 by lbenard           #+#    #+#             */
+/*   Updated: 2018/12/21 22:03:40 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstpushback(t_list **list, t_list *new)
+t_vec4f	ft_vec3f_to_vec4f(t_vec3f src)
 {
-	t_list	*head;
-
-	head = *list;
-	while (head->next)
-		head = head->next;
-	head->next = new;
-	return (head->next);
+	return (ft_vec4f(src.x, src.y, src.z, 1.0f));
 }
