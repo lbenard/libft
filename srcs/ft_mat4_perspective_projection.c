@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_mat4_perspective_projection.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 09:45:59 by lbenard           #+#    #+#             */
-/*   Updated: 2019/01/07 13:45:04 by lbenard          ###   ########.fr       */
+/*   Created: 2019/01/08 17:45:55 by lbenard           #+#    #+#             */
+/*   Updated: 2019/01/24 18:07:22 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <math.h>
 
-t_list	*ft_lstpushback(t_list **list, t_list *new)
+t_mat4	ft_mat4_perspective_projection(void)
 {
-	t_list	*head;
-
-	if (!list)
-		return (NULL);
-	if (!*list)
-	{
-		*list = new;
-		return (new);
-	}
-	head = *list;
-	while (head->next)
-		head = head->next;
-	head->next = new;
-	return (head->next);
+	return ((t_mat4)(struct s_mat4_data) {
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 0, 1,
+		0, 0, 1.0f / 500.0f, 1
+	});
 }

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 09:45:59 by lbenard           #+#    #+#             */
-/*   Updated: 2019/01/07 13:45:04 by lbenard          ###   ########.fr       */
+/*   Created: 2019/01/15 19:23:58 by lbenard           #+#    #+#             */
+/*   Updated: 2019/01/16 22:03:33 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstpushback(t_list **list, t_list *new)
+double	ft_atof(const char *str)
 {
-	t_list	*head;
+	double	result;
+	int		sign;
+	double	decimal;
 
-	if (!list)
-		return (NULL);
-	if (!*list)
+	result = 0.0;
+	sign = 1;
+	decimal = 0.1;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
 	{
-		*list = new;
-		return (new);
+		sign = -1;
+		str++;
 	}
-	head = *list;
-	while (head->next)
-		head = head->next;
-	head->next = new;
-	return (head->next);
+	else if (*str == '+')
+		str++;
+	while (ft_isdigit(*str))
+		result = result * 10.0 + (*str++ - '0');
+	if (*str++ == '.')
+		while (ft_isdigit(*str))
+		{
+			result += decimal * (*str++ - '0');
+			decimal /= 10.0;
+		}
+	return (sign * result);
 }

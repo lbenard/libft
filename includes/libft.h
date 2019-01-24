@@ -6,7 +6,7 @@
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2018/12/21 22:01:55 by lbenard          ###   ########.fr       */
+/*   Updated: 2019/01/24 16:57:14 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdint.h>
 # ifdef __linux__
 #  include <sys/types.h>
 # endif
 
-typedef unsigned char	t_u8;
-typedef char			t_i8;
+typedef uint8_t		t_u8;
+typedef int8_t		t_i8;
+typedef uint16_t	t_u16;
+typedef int16_t		t_i16;
+typedef uint32_t	t_u32;
+typedef int32_t		t_i32;
+typedef uint64_t	t_u64;
+typedef int64_t		t_i64;
 
 /*
 ** List struct
@@ -69,13 +76,6 @@ typedef struct			s_vec2i
 	int	y;
 }						t_vec2i;
 
-typedef struct			s_vec3i
-{
-	int	x;
-	int	y;
-	int	z;
-}						t_vec3i;
-
 typedef struct			s_vec2f
 {
 	float	x;
@@ -99,7 +99,7 @@ typedef struct			s_vec4f
 
 typedef union			u_mat3
 {
-	struct s_mat3_data
+	struct				s_mat3_data
 	{
 		float	m00;
 		float	m01;
@@ -110,13 +110,13 @@ typedef union			u_mat3
 		float	m20;
 		float	m21;
 		float	m22;
-	}		d;
-	float	m[3][3];
+	}					d;
+	float				m[3][3];
 }						t_mat3;
 
 typedef union			u_mat4
 {
-	struct s_mat4_data
+	struct				s_mat4_data
 	{
 		float	m00;
 		float	m01;
@@ -134,8 +134,8 @@ typedef union			u_mat4
 		float	m31;
 		float	m32;
 		float	m33;
-	}		d;
-	float	m[4][4];
+	}					d;
+	float				m[4][4];
 }						t_mat4;
 
 /*
@@ -190,6 +190,8 @@ char					*ft_strtrim(const char *s);
 char					**ft_strsplit(const char *s, char c);
 size_t					ft_strcount(const char *s, char c);
 int						get_next_line(int fd, char **line);
+const char				*ft_getline(const char *file, size_t line);
+const char				*ft_skipchr(const char *str, char skip);
 
 /*
 ** is*
@@ -216,6 +218,7 @@ int						ft_tolower(int c);
 */
 
 int						ft_atoi(const char *str);
+double					ft_atof(const char *str);
 char					*ft_itoa(int n);
 int						ft_abs(int i);
 int						ft_min(int a, int b);
@@ -239,7 +242,8 @@ void					ft_putnbr_fd(int n, int fd);
 ** Linked lists
 */
 
-t_list					*ft_lstnew(const void *content, size_t content_size);
+t_list					*ft_lstnew(void *content, size_t content_size);
+t_list					*ft_lstnewcpy(const void *content, size_t content_size);
 void					ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void					ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void					ft_lstadd(t_list **alst, t_list *new);
@@ -257,8 +261,10 @@ void					ft_lstfree(t_list **list);
 void					ft_lstremove(t_list **list, t_list *to_remove);
 
 /*
-** CG functions
+** CG
 */
+
+# define PI 3.14159265359
 
 t_usize					ft_usize(size_t x, size_t y);
 t_isize					ft_isize(ssize_t x, ssize_t y);
@@ -268,18 +274,20 @@ t_isize					ft_isize(ssize_t x, ssize_t y);
 */
 
 t_vec2i					ft_vec2i(int x, int y);
-t_vec3i					ft_vec3i(int x, int y, int z);
 
 t_vec2f					ft_vec2f(float x, float y);
 float					ft_vec2f_dot(t_vec2f a, t_vec2f b);
+t_vec2f					ft_vec2f_scalar(t_vec2f src, float a);
 
 t_vec3f					ft_vec3f(float x, float y, float z);
 float					ft_vec3f_dot(t_vec3f a, t_vec3f b);
+t_vec3f					ft_vec3f_scalar(t_vec3f src, float a);
 t_vec4f					ft_vec3f_to_vec4f(t_vec3f src);
 t_vec2f					ft_vec3f_to_vec2f(t_vec3f src);
 
 t_vec4f					ft_vec4f(float x, float y, float z, float w);
 float					ft_vec4f_dot(t_vec4f a, t_vec4f b);
+t_vec4f					ft_vec4f_scalar(t_vec4f src, float a);
 t_vec3f					ft_vec4f_to_vec3f(t_vec4f src);
 
 /*
@@ -301,6 +309,8 @@ t_vec4f					ft_mat4_x_vec4(t_mat4 a, t_vec4f b);
 t_mat4					ft_mat4_translation(t_vec3f translation);
 t_mat4					ft_mat4_scaling(t_vec3f scaling);
 t_mat4					ft_mat4_rotation(t_vec3f rotation);
-t_mat4					ft_mat4_view(t_vec3f position, t_vec2f rotation);
+
+t_mat4					ft_mat4_orthographic_projection(void);
+t_mat4					ft_mat4_perspective_projection(void);
 
 #endif
