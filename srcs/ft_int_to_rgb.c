@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec2f_dot.c                                     :+:      :+:    :+:   */
+/*   ft_int_to_rgb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 01:00:06 by freezee           #+#    #+#             */
-/*   Updated: 2019/01/26 18:11:39 by lbenard          ###   ########.fr       */
+/*   Created: 2019/01/27 16:06:59 by lbenard           #+#    #+#             */
+/*   Updated: 2019/01/27 16:08:03 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	ft_vec2f_dot(t_vec2f a, t_vec2f b)
+t_rgb	ft_int_to_rgb(t_u32 color)
 {
-	return (a.x * b.x + a.y * b.y);
+	t_rgb	result;
+
+	result.b = color;
+	result.g = color >> 8;
+	result.r = color >> 16;
+	return (result);
 }

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec2f_dot.c                                     :+:      :+:    :+:   */
+/*   ft_vec2d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 01:00:06 by freezee           #+#    #+#             */
-/*   Updated: 2019/01/26 18:11:39 by lbenard          ###   ########.fr       */
+/*   Created: 2019/01/26 18:10:43 by lbenard           #+#    #+#             */
+/*   Updated: 2019/02/08 13:23:01 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	ft_vec2f_dot(t_vec2f a, t_vec2f b)
+t_vec2d	ft_vec2d(double x, double y)
 {
-	return (a.x * b.x + a.y * b.y);
+	t_vec2d	retval;
+
+	retval.x = x;
+	retval.y = y;
+	return (retval);
 }

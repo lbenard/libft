@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec2f_dot.c                                     :+:      :+:    :+:   */
+/*   ft_vec3d_to_vec4d.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 01:00:06 by freezee           #+#    #+#             */
-/*   Updated: 2019/01/26 18:11:39 by lbenard          ###   ########.fr       */
+/*   Created: 2019/01/26 18:14:15 by lbenard           #+#    #+#             */
+/*   Updated: 2019/02/08 13:27:37 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	ft_vec2f_dot(t_vec2f a, t_vec2f b)
+t_vec4d	ft_vec3d_to_vec4d(t_vec3d src)
 {
-	return (a.x * b.x + a.y * b.y);
+	t_vec4d	dst;
+
+	dst.x = src.x;
+	dst.y = src.y;
+	dst.z = src.z;
+	dst.w = 1;
+	return (dst);
 }

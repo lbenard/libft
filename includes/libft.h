@@ -6,7 +6,7 @@
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2019/01/24 16:57:14 by lbenard          ###   ########.fr       */
+/*   Updated: 2019/02/14 13:22:04 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct			s_list
 ** GNL
 */
 
-# define BUFF_SIZE 2048
+# define BUFF_SIZE 4096
 # define READ_ERROR -1
 # define READ_FINISH 0
 # define LINE_READ 1
@@ -76,6 +76,21 @@ typedef struct			s_vec2i
 	int	y;
 }						t_vec2i;
 
+typedef struct			s_vec3i
+{
+	int	x;
+	int	y;
+	int	z;
+}						t_vec3i;
+
+typedef struct			s_vec4i
+{
+	int	x;
+	int	y;
+	int	z;
+	int	w;
+}						t_vec4i;
+
 typedef struct			s_vec2f
 {
 	float	x;
@@ -96,6 +111,48 @@ typedef struct			s_vec4f
 	float	z;
 	float	w;
 }						t_vec4f;
+
+typedef struct			s_vec2d
+{
+	double	x;
+	double	y;
+}						t_vec2d;
+
+typedef struct			s_vec3d
+{
+	double	x;
+	double	y;
+	double	z;
+}						t_vec3d;
+
+typedef struct			s_vec4d
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+}						t_vec4d;
+
+typedef struct			s_vec2ld
+{
+	long double	x;
+	long double	y;
+}						t_vec2ld;
+
+typedef struct			s_vec3ld
+{
+	long double	x;
+	long double	y;
+	long double	z;
+}						t_vec3ld;
+
+typedef struct			s_vec4ld
+{
+	long double	x;
+	long double	y;
+	long double	z;
+	long double	w;
+}						t_vec4ld;
 
 typedef union			u_mat3
 {
@@ -137,6 +194,20 @@ typedef union			u_mat4
 	}					d;
 	float				m[4][4];
 }						t_mat4;
+
+typedef struct			s_rgb
+{
+	t_u8	r;
+	t_u8	g;
+	t_u8	b;
+}						t_rgb;
+
+typedef struct			s_hsv
+{
+	float	h;
+	float	s;
+	float	v;
+}						t_hsv;
 
 /*
 ** Memory
@@ -265,6 +336,7 @@ void					ft_lstremove(t_list **list, t_list *to_remove);
 */
 
 # define PI 3.14159265359
+# define LOG2 0.693147
 
 t_usize					ft_usize(size_t x, size_t y);
 t_isize					ft_isize(ssize_t x, ssize_t y);
@@ -274,6 +346,8 @@ t_isize					ft_isize(ssize_t x, ssize_t y);
 */
 
 t_vec2i					ft_vec2i(int x, int y);
+t_vec3i					ft_vec3i(int x, int y, int z);
+t_vec4i					ft_vec4i(int x, int y, int z, int w);
 
 t_vec2f					ft_vec2f(float x, float y);
 float					ft_vec2f_dot(t_vec2f a, t_vec2f b);
@@ -289,6 +363,37 @@ t_vec4f					ft_vec4f(float x, float y, float z, float w);
 float					ft_vec4f_dot(t_vec4f a, t_vec4f b);
 t_vec4f					ft_vec4f_scalar(t_vec4f src, float a);
 t_vec3f					ft_vec4f_to_vec3f(t_vec4f src);
+
+t_vec2d					ft_vec2d(double x, double y);
+double					ft_vec2d_dot(t_vec2d a, t_vec2d b);
+t_vec2d					ft_vec2d_scalar(t_vec2d src, double a);
+
+t_vec3d					ft_vec3d(double x, double y, double z);
+double					ft_vec3d_dot(t_vec3d a, t_vec3d b);
+t_vec3d					ft_vec3d_scalar(t_vec3d src, double a);
+t_vec4d					ft_vec3d_to_vec4d(t_vec3d src);
+t_vec2d					ft_vec3d_to_vec2d(t_vec3d src);
+
+t_vec4d					ft_vec4d(double x, double y, double z, double w);
+double					ft_vec4d_dot(t_vec4d a, t_vec4d b);
+t_vec4d					ft_vec4d_scalar(t_vec4d src, double a);
+t_vec3d					ft_vec4d_to_vec3d(t_vec4d src);
+
+t_vec2ld				ft_vec2ld(long double x, long double y);
+long double				ft_vec2ld_dot(t_vec2ld a, t_vec2ld b);
+t_vec2ld				ft_vec2ld_scalar(t_vec2ld src, long double a);
+
+t_vec3ld				ft_vec3ld(long double x, long double y, long double z);
+long double				ft_vec3ld_dot(t_vec3ld a, t_vec3ld b);
+t_vec3ld				ft_vec3ld_scalar(t_vec3ld src, long double a);
+t_vec4ld				ft_vec3ld_to_vec4ld(t_vec3ld src);
+t_vec2ld				ft_vec3ld_to_vec2ld(t_vec3ld src);
+
+t_vec4ld				ft_vec4ld(long double x, long double y,
+	long double z, long double w);
+long double				ft_vec4ld_dot(t_vec4ld a, t_vec4ld b);
+t_vec4ld				ft_vec4ld_scalar(t_vec4ld src, long double a);
+t_vec3ld				ft_vec4ld_to_vec3ld(t_vec4ld src);
 
 /*
 ** Matrices
@@ -312,5 +417,16 @@ t_mat4					ft_mat4_rotation(t_vec3f rotation);
 
 t_mat4					ft_mat4_orthographic_projection(void);
 t_mat4					ft_mat4_perspective_projection(void);
+
+/*
+** Colors
+*/
+
+t_rgb					ft_rgb(t_u8 r, t_u8 g, t_u8 b);
+t_u32					ft_rgb_to_int(t_rgb color);
+t_rgb					ft_int_to_rgb(t_u32 color);
+
+t_hsv					ft_hsv(float h, float s, float v);
+t_rgb					ft_hsv_to_rgb(t_hsv color);
 
 #endif

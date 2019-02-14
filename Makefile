@@ -6,7 +6,7 @@
 #    By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2019/01/24 16:58:18 by lbenard          ###   ########.fr        #
+#    Updated: 2019/02/14 13:22:33 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,30 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_vec4f_dot.c						\
 				srcs/ft_vec4f_scalar.c					\
 				srcs/ft_vec4f_to_vec3f.c				\
+				srcs/ft_vec2d.c							\
+				srcs/ft_vec2d_dot.c						\
+				srcs/ft_vec2d_scalar.c					\
+				srcs/ft_vec3d.c							\
+				srcs/ft_vec3d_dot.c						\
+				srcs/ft_vec3d_scalar.c					\
+				srcs/ft_vec3d_to_vec4d.c				\
+				srcs/ft_vec3d_to_vec2d.c				\
+				srcs/ft_vec4d.c							\
+				srcs/ft_vec4d_dot.c						\
+				srcs/ft_vec4d_scalar.c					\
+				srcs/ft_vec4d_to_vec3d.c				\
+				srcs/ft_vec2ld.c						\
+				srcs/ft_vec2ld_dot.c					\
+				srcs/ft_vec2ld_scalar.c					\
+				srcs/ft_vec3ld.c						\
+				srcs/ft_vec3ld_dot.c					\
+				srcs/ft_vec3ld_scalar.c					\
+				srcs/ft_vec3ld_to_vec4ld.c				\
+				srcs/ft_vec3ld_to_vec2ld.c				\
+				srcs/ft_vec4ld.c						\
+				srcs/ft_vec4ld_dot.c					\
+				srcs/ft_vec4ld_scalar.c					\
+				srcs/ft_vec4ld_to_vec3ld.c				\
 				srcs/ft_mat3.c							\
 				srcs/ft_mat3_identity.c					\
 				srcs/ft_print_mat3.c					\
@@ -120,7 +144,12 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_mat4_scaling.c					\
 				srcs/ft_mat4_rotation.c					\
 				srcs/ft_mat4_orthographic_projection.c	\
-				srcs/ft_mat4_perspective_projection.c
+				srcs/ft_mat4_perspective_projection.c	\
+				srcs/ft_rgb.c							\
+				srcs/ft_rgb_to_int.c					\
+				srcs/ft_int_to_rgb.c					\
+				srcs/ft_hsv.c							\
+				srcs/ft_hsv_to_rgb.c
 OBJ			=	$(SRC:.c=.o)
 SRC_FOLDER	=	./srcs
 INCLUDES	=	./includes
@@ -133,22 +162,24 @@ RESET		=	\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@printf "$(GREEN)[cc]$(RESET): done\n"
-	@printf "$(GREEN)[ld]$(RESET): $(NAME)\n"
 	@ar rcs $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@printf "$(GREEN)[$(NAME)]$(RESET): done\n"
 
 .c.o: $(SRC)
-	@printf "$(GREEN)[cc]$(RESET): $< -> $@\n"
+	@printf "$(GREEN)[$(NAME)]$(RESET): $< -> $@\n"
 	@printf "\e[1A"
 	@gcc -c $< -o $@ -I $(INCLUDES) $(FLAGS)
 	@printf "\e[0K"
 
 clean:
-	@printf "$(GREEN)[rm]$(RESET): object files\n"
+	@printf "$(GREEN)[$(NAME)]$(RESET): clean\n"
 	@rm -rf $(OBJ)
 
-fclean: clean
-	@printf "$(GREEN)[rm]$(RESET): library file\n"
-	@rm -rf $(NAME)
+fclean:
+	@rm -rf $(OBJ) $(NAME)
+	@printf "$(GREEN)[$(NAME)]$(RESET): fclean\n"
 
 re: fclean all
+
+.PHONY: clean fclean re
