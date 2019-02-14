@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat4_scaling.c                                  :+:      :+:    :+:   */
+/*   ft_list_del.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 16:38:06 by lbenard           #+#    #+#             */
-/*   Updated: 2019/02/14 16:12:09 by lbenard          ###   ########.fr       */
+/*   Created: 2019/02/14 15:31:19 by lbenard           #+#    #+#             */
+/*   Updated: 2019/02/14 15:32:02 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_mat4	ft_mat4_scaling(t_vec3f scaling)
+void	ft_list_del(t_list_head *prev, t_list_head *next)
 {
-	float	x;
-	float	y;
-	float	z;
-
-	x = scaling.x;
-	y = scaling.y;
-	z = scaling.z;
-	return ((t_mat4)(struct s_mat4_data) {
-		x, 0, 0, 0,
-		0, y, 0, 0,
-		0, 0, z, 0,
-		0, 0, 0, 1
-	});
+	prev->next = next;
+	next->prev = prev;
 }

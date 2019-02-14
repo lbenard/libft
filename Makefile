@@ -6,7 +6,7 @@
 #    By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2019/02/14 13:22:33 by lbenard          ###   ########.fr        #
+#    Updated: 2019/02/14 16:50:33 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_strtrim.c						\
 				srcs/ft_strsplit.c						\
 				srcs/ft_strcount.c						\
-				srcs/get_next_line.c					\
 				srcs/ft_getline.c						\
 				srcs/ft_skipchr.c						\
 				srcs/ft_isalpha.c						\
@@ -91,6 +90,17 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_lstlast.c						\
 				srcs/ft_lstfree.c						\
 				srcs/ft_lstremove.c						\
+				srcs/ft_list_init_head.c				\
+				srcs/ft_list_add.c						\
+				srcs/ft_list_add_entry.c				\
+				srcs/ft_list_add_tail.c					\
+				srcs/ft_list_del.c						\
+				srcs/ft_list_del_entry.c				\
+				srcs/ft_list_move.c						\
+				srcs/ft_list_move_tail.c				\
+				srcs/ft_list_is_last.c					\
+				srcs/ft_list_is_empty.c					\
+				srcs/get_next_line.c					\
 				srcs/ft_usize.c							\
 				srcs/ft_isize.c							\
 				srcs/ft_vec2i.c							\
@@ -100,44 +110,44 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_vec3f.c							\
 				srcs/ft_vec3f_dot.c						\
 				srcs/ft_vec3f_scalar.c					\
-				srcs/ft_vec3f_to_vec4f.c				\
 				srcs/ft_vec3f_to_vec2f.c				\
 				srcs/ft_vec4f.c							\
 				srcs/ft_vec4f_dot.c						\
 				srcs/ft_vec4f_scalar.c					\
 				srcs/ft_vec4f_to_vec3f.c				\
+				srcs/ft_vec3f_to_vec4f.c				\
 				srcs/ft_vec2d.c							\
 				srcs/ft_vec2d_dot.c						\
 				srcs/ft_vec2d_scalar.c					\
 				srcs/ft_vec3d.c							\
 				srcs/ft_vec3d_dot.c						\
 				srcs/ft_vec3d_scalar.c					\
-				srcs/ft_vec3d_to_vec4d.c				\
 				srcs/ft_vec3d_to_vec2d.c				\
 				srcs/ft_vec4d.c							\
 				srcs/ft_vec4d_dot.c						\
 				srcs/ft_vec4d_scalar.c					\
 				srcs/ft_vec4d_to_vec3d.c				\
+				srcs/ft_vec3d_to_vec4d.c				\
 				srcs/ft_vec2ld.c						\
 				srcs/ft_vec2ld_dot.c					\
 				srcs/ft_vec2ld_scalar.c					\
 				srcs/ft_vec3ld.c						\
 				srcs/ft_vec3ld_dot.c					\
 				srcs/ft_vec3ld_scalar.c					\
-				srcs/ft_vec3ld_to_vec4ld.c				\
 				srcs/ft_vec3ld_to_vec2ld.c				\
 				srcs/ft_vec4ld.c						\
 				srcs/ft_vec4ld_dot.c					\
 				srcs/ft_vec4ld_scalar.c					\
 				srcs/ft_vec4ld_to_vec3ld.c				\
+				srcs/ft_vec3ld_to_vec4ld.c				\
 				srcs/ft_mat3.c							\
 				srcs/ft_mat3_identity.c					\
 				srcs/ft_print_mat3.c					\
+				srcs/ft_mat3_x_mat3.c					\
+				srcs/ft_mat3_x_vec3.c					\
 				srcs/ft_mat4.c							\
 				srcs/ft_mat4_identity.c					\
 				srcs/ft_print_mat4.c					\
-				srcs/ft_mat3_x_mat3.c					\
-				srcs/ft_mat3_x_vec3.c					\
 				srcs/ft_mat4_x_mat4.c					\
 				srcs/ft_mat4_x_vec4.c					\
 				srcs/ft_mat4_translation.c				\
@@ -153,7 +163,7 @@ SRC			=	srcs/ft_memset.c						\
 OBJ			=	$(SRC:.c=.o)
 SRC_FOLDER	=	./srcs
 INCLUDES	=	./includes
-FLAGS		=	-Wall -Wextra -Werror -O3 -Ofast -std=c99
+FLAGS		=	-Wall -Wextra -Werror -O3 -Ofast -flto -std=c89
 
 # Colors
 GREEN		=	\033[32m
