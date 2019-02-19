@@ -6,7 +6,7 @@
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2019/02/14 17:30:25 by lbenard          ###   ########.fr       */
+/*   Updated: 2019/02/18 20:08:05 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,25 @@ int						ft_list_is_last(const t_list_head *list,
 	const t_list_head *head);
 int						ft_list_is_empty(const t_list_head *head);
 void					ft_list_foreach(t_list_head *list, void (*fn)());
+
+/*
+** C++-like vector
+*/
+
+typedef struct			s_vector
+{
+	size_t	capacity;
+	size_t	size;
+	void	*data;
+}						t_vector;
+
+t_vector				ft_vector(void);
+t_vector				ft_vector_data(const void *data, size_t size);
+void					ft_vector_reserve(t_vector *vector,
+	size_t capacity);
+void					ft_vector_push_back(t_vector *vector, const void *data,
+	size_t size);
+void					ft_vector_free(t_vector *vector);
 
 /*
 ** GNL
