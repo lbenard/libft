@@ -6,7 +6,7 @@
 #    By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2019/02/19 16:27:49 by lbenard          ###   ########.fr        #
+#    Updated: 2019/02/19 17:28:05 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,8 +158,6 @@ SRC			=	srcs/ft_memset.c						\
 				srcs/ft_mat4_translation.c				\
 				srcs/ft_mat4_scaling.c					\
 				srcs/ft_mat4_rotation.c					\
-				srcs/ft_mat4_orthographic_projection.c	\
-				srcs/ft_mat4_perspective_projection.c	\
 				srcs/ft_rgb.c							\
 				srcs/ft_rgb_to_int.c					\
 				srcs/ft_int_to_rgb.c					\

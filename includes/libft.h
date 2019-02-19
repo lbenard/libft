@@ -6,7 +6,7 @@
 /*   By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:43:39 by lbenard           #+#    #+#             */
-/*   Updated: 2019/02/18 20:08:05 by lbenard          ###   ########.fr       */
+/*   Updated: 2019/02/19 17:23:17 by lbenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,9 +438,6 @@ t_vec4f					ft_mat4_x_vec4(t_mat4 a, t_vec4f b);
 t_mat4					ft_mat4_translation(t_vec3f translation);
 t_mat4					ft_mat4_scaling(t_vec3f scaling);
 t_mat4					ft_mat4_rotation(t_vec3f rotation);
-
-t_mat4					ft_mat4_orthographic_projection(void);
-t_mat4					ft_mat4_perspective_projection(void);
 
 typedef struct			s_rgb
 {
