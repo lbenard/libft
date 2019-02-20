@@ -6,7 +6,7 @@
 #    By: lbenard <lbenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:02:14 by lbenard           #+#    #+#              #
-#    Updated: 2019/02/20 20:22:43 by lbenard          ###   ########.fr        #
+#    Updated: 2019/02/20 21:56:15 by lbenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -174,9 +174,8 @@ SRCS			=	$(addprefix $(SRCS_FOLDER), $(SRCS_LIST))
 OBJS_LIST		=	$(SRCS_LIST:.c=.o)
 OBJS_FOLDER		=	./objs/
 OBJS			=	$(addprefix $(OBJS_FOLDER), $(OBJS_LIST))
-INCLUDES		=	./includes/
-BUILD_FOLDER	=	./
-CFLAGS			=	-Wall -Wextra -Werror -O3 -Ofast
+INCLUDES		=	-I includes/
+CFLAGS			=	-Wall -Wextra -Werror -O3 -Ofast -flto
 
 # Colors
 BOLD			=	\e[1m
@@ -214,7 +213,7 @@ $(NAME): $(OBJS)
 $(OBJS_FOLDER)%.o: $(SRCS_FOLDER)%.c
 	@printf "$(PREFIX) $(shell basename $<)\n"
 	@mkdir -p $(dir $@)
-	@gcc -c $< -o $@ -I $(INCLUDES) $(CFLAGS)
+	@gcc -c $< -o $@ $(INCLUDES) $(CFLAGS)
 	@printf "\e[1A\e[0K"
 
 clean:
